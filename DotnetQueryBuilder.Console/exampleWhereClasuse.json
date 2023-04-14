@@ -1,0 +1,11 @@
+[
+  {
+    "_type": "foo",
+    "fooProp": {
+      "_type": "bar",
+      "barProp": "barValue",
+      "nestedProp": { "_type": "baz", "bazProp": "bazValue" }
+    }
+  },
+  { "_type": "baz", "bazProp": "bazValue2" }
+]

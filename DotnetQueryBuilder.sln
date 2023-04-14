@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetQueryBuilder.Console", "DotnetQueryBuilder.Console\DotnetQueryBuilder.Console.csproj", "{84BA2F8A-F140-4C57-8D36-FDA3D58D017F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetQueryBuilder.Core", "DotnetQueryBuilder.Core\DotnetQueryBuilder.Core.csproj", "{E3971EB4-4ABE-45B5-8B95-3E6A8F5E4048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetQueryBuilder.Tests", "DotnetQueryBuilder.Tests\DotnetQueryBuilder.Tests.csproj", "{3417B698-1A43-4C24-A027-64F9F8799C94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetQueryBuilder.DbConnect", "DotnetQueryBuilder.DbConnect\DotnetQueryBuilder.DbConnect.csproj", "{DA90ABBC-0E7B-40B4-89F8-50F1D601A333}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84BA2F8A-F140-4C57-8D36-FDA3D58D017F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BA2F8A-F140-4C57-8D36-FDA3D58D017F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BA2F8A-F140-4C57-8D36-FDA3D58D017F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BA2F8A-F140-4C57-8D36-FDA3D58D017F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3971EB4-4ABE-45B5-8B95-3E6A8F5E4048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3971EB4-4ABE-45B5-8B95-3E6A8F5E4048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3971EB4-4ABE-45B5-8B95-3E6A8F5E4048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3971EB4-4ABE-45B5-8B95-3E6A8F5E4048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3417B698-1A43-4C24-A027-64F9F8799C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3417B698-1A43-4C24-A027-64F9F8799C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3417B698-1A43-4C24-A027-64F9F8799C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3417B698-1A43-4C24-A027-64F9F8799C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA90ABBC-0E7B-40B4-89F8-50F1D601A333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA90ABBC-0E7B-40B4-89F8-50F1D601A333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA90ABBC-0E7B-40B4-89F8-50F1D601A333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA90ABBC-0E7B-40B4-89F8-50F1D601A333}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/bin/Debug/net7.0/DotnetQueryBuilder.Core.deps.json
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/bin/Debug/net7.0/DotnetQueryBuilder.Core.runtimeconfig.json
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/bin/Debug/net7.0/DotnetQueryBuilder.Core.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/bin/Debug/net7.0/DotnetQueryBuilder.Core.pdb
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.csproj.AssemblyReference.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.AssemblyInfoInputs.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.AssemblyInfo.cs
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.csproj.CoreCompileInputs.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/refint/DotnetQueryBuilder.Core.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.pdb
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/DotnetQueryBuilder.Core.genruntimeconfig.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/Debug/net7.0/ref/DotnetQueryBuilder.Core.dll

@@ -1,0 +1,91 @@
+{
+  "fields": [
+    {
+      "name": "id",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "name": "first_name",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "name": "last_name",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "alias": "total_orders",
+      "expression": {
+        "function": "count",
+        "expression": {
+          "name": "id",
+          "table": "t1",
+          "_type": "column"
+        },
+        "_type": "aggregate"
+      },
+      "_type": "columnexpression"
+    }
+  ],
+  "from": {
+    "alias": "t0",
+    "expression": {
+      "tableSchema": "public",
+      "tableName": "customers",
+      "_type": "table"
+    },
+    "_type": "tableexpression"
+  },
+  "joins": [
+    {
+      "joinType": "inner",
+      "target": {
+        "alias": "t1",
+        "expression": {
+          "tableSchema": "public",
+          "tableName": "orders",
+          "_type": "table"
+        },
+        "_type": "tableexpression"
+      },
+      "condition": {
+        "operator": "eq",
+        "left": {
+          "name": "id",
+          "table": "t0",
+          "_type": "column"
+        },
+        "right": {
+          "name": "customer_id",
+          "table": "t1",
+          "_type": "column"
+        },
+        "_type": "predicate"
+      },
+      "_type": "join"
+    }
+  ],
+  "groupBy": {
+    "columns": [
+      {
+        "name": "id",
+        "table": "t0",
+        "_type": "column"
+      },
+      {
+        "name": "first_name",
+        "table": "t0",
+        "_type": "column"
+      },
+      {
+        "name": "last_name",
+        "table": "t0",
+        "_type": "column"
+      }
+    ],
+    "_type": "groupby"
+  },
+  "_type": "select"
+}

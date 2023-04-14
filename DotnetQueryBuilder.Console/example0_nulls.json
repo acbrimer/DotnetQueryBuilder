@@ -1,0 +1,56 @@
+{
+  "alias": null,
+  "fields": [
+    {
+      "name": "id",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "name": "first_name",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "name": "last_name",
+      "table": "t0",
+      "_type": "column"
+    },
+    {
+      "name": "middle_name",
+      "expression": {
+        "name": "name_middle",
+        "table": "t0",
+        "_type": "column"
+      },
+      "_type": "field"
+    },
+    {
+      "name": "total_orders",
+      "expression": {
+        "operator": "add",
+        "left": {
+          "name": "pending_orders",
+          "table": "t0",
+          "_type": "column"
+        },
+        "right": {
+          "name": "completed_orders",
+          "table": "t0",
+          "_type": "column"
+        },
+        "_type": "binary"
+      },
+      "_type": "field"
+    }
+  ],
+  "from": {
+    "alias": "t0",
+    "tableCatalog": null,
+    "tableSchema": "public",
+    "tableName": "customers",
+    "_type": "table"
+  },
+  "where": null,
+  "_type": "select"
+}

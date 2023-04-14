@@ -1,0 +1,260 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Tests/DotnetQueryBuilder.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj",
+        "projectName": "DotnetQueryBuilder.Core",
+        "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj",
+        "packagesPath": "/Users/abrimer/.nuget/packages/",
+        "outputPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abrimer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "BasicSQLFormatter": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.32.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.117, )"
+            },
+            "linq2db": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj",
+        "projectName": "DotnetQueryBuilder.DbConnect",
+        "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj",
+        "packagesPath": "/Users/abrimer/.nuget/packages/",
+        "outputPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abrimer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj": {
+                "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "BasicSQLFormatter": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.32.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.117, )"
+            },
+            "linq2db": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Tests/DotnetQueryBuilder.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Tests/DotnetQueryBuilder.Tests.csproj",
+        "projectName": "DotnetQueryBuilder.Tests",
+        "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Tests/DotnetQueryBuilder.Tests.csproj",
+        "packagesPath": "/Users/abrimer/.nuget/packages/",
+        "outputPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/abrimer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj": {
+                "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.Core/DotnetQueryBuilder.Core.csproj"
+              },
+              "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj": {
+                "projectPath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
