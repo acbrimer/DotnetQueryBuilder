@@ -42,29 +42,9 @@
               "target": "Package",
               "version": "[1.0.3, )"
             },
-            "Dapper": {
-              "target": "Package",
-              "version": "[2.0.123, )"
-            },
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[8.0.32.1, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[7.0.2, )"
-            },
-            "System.Data.SQLite": {
-              "target": "Package",
-              "version": "[1.0.117, )"
-            },
-            "linq2db": {
-              "target": "Package",
-              "version": "[5.1.1, )"
             }
           },
           "imports": [

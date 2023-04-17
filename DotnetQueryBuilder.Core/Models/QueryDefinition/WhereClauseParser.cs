@@ -67,3 +67,21 @@ public static class WhereClauseParser
     }
 
 }
+
+// string filterJson = @"{
+//     ""group_id"": 1,
+//     ""__and"": [
+//         { ""name"": ""John"" },
+//         { ""age__gt"": 30 },
+//         {""__or"": [
+//             { ""name"": ""Dave"" },
+//             { ""name"": ""Sam"" },
+//             {""__and"": [
+//                 {""name"": ""Marc""},
+//                 {""age"": 22}
+//             ]}
+//         ]}  
+//     ]
+// }";
+
+// Console.WriteLine(WhereClauseBuilder.BuildWhereClause(filterJson));

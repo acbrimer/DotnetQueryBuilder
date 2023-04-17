@@ -16,7 +16,8 @@ interface IQueryExpression {
     | "select"
     | "single"
     | "table"
-    | "ternary";
+    | "ternary"
+    | "concat";
 }
 type AggregateQEFunction = "COUNT" | "COUNTD" | "MIN" | "MAX" | "SUM" | "AVG";
 interface IAggregateQE extends IQueryExpression {
@@ -219,18 +220,20 @@ interface ISelectQE extends IQueryExpression {
   alias: string;
   _type: "select";
 }
+
+type ColumnQEType =
+  | IAggregateQE
+  | IBinaryQE
+  | ICaseQE
+  | ICastQE
+  | IColumnQE
+  | IConstantQE
+  | ISingleQE
+  | ITernaryQE;
+  
 interface ISingleQE extends IQueryExpression {
   limit: number | null;
-  columns: (
-    | IAggregateQE
-    | IBinaryQE
-    | ICaseQE
-    | ICastQE
-    | IColumnQE
-    | IConstantQE
-    | ISingleQE
-    | ITernaryQE
-  )[];
+  columns: ColumnQEType[];
   fromClause: ISelectQE | ISingleQE | ITableQE;
   joinClause: IJoinQE[];
   whereClause: IAndQE | IOrQE | IPredicateQE;
@@ -286,4 +289,19 @@ interface ITernaryQE extends IQueryExpression {
     | ITernaryQE;
   alias: string;
   _type: "ternary";
+}
+
+interface IConcatQE extends IQueryExpression {
+  arguments: (
+    | IAggregateQE
+    | IBinaryQE
+    | ICaseQE
+    | ICastQE
+    | IColumnQE
+    | IConstantQE
+    | ISingleQE
+    | ITernaryQE
+  )[];
+  alias: string;
+  _type: "concat";
 }

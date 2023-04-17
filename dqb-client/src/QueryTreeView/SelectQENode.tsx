@@ -1,6 +1,7 @@
 import React from "react";
 import QENode from "./QENode";
 import QEItem from "./QEItem";
+import ColumnNode from "./ColumnNode";
 
 type SelectQEProps = {
   node: ISelectQE;
@@ -13,7 +14,11 @@ const SelectQENode = (props: SelectQEProps) => {
     <QEItem nodeId={nodeId} label="Select">
       <QEItem nodeId={`${nodeId}.columns`} label="Columns">
         {node.columns.map((c, ix) => (
-          <QENode nodeId={`${nodeId}.columns[${ix}]`} node={c} />
+          <ColumnNode
+            ordinalPosition={ix}
+            nodeId={`${nodeId}.columns[${ix}]`}
+            node={c}
+          />
         ))}
       </QEItem>
       <QEItem label="From" nodeId={`${nodeId}-from`}>
@@ -28,7 +33,7 @@ const SelectQENode = (props: SelectQEProps) => {
       </QEItem>
       <QEItem label="Where" nodeId={`${nodeId}-where`}>
         {node.whereClause && (
-          <QEItem label="Where" nodeId={`${nodeId}.whereClause`} />
+          <QENode node={node.whereClause} nodeId={`${nodeId}.whereClause`} />
         )}
       </QEItem>
     </QEItem>

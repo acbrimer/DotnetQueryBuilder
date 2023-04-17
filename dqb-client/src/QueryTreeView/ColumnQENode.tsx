@@ -1,9 +1,5 @@
 import React from "react";
-import QEItem from "./QEItem";
-import QEColumn from "./QEColumn";
-import QEProperty from "./QEProperty";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import PropertyNode from "./PropertyNode";
 
 type ColumnQEProps = {
   node: IColumnQE;
@@ -13,33 +9,26 @@ type ColumnQEProps = {
 const ColumnQENode = (props: ColumnQEProps) => {
   const { node, nodeId } = props;
   return (
-    <QEColumn
-      columnType="db"
-      expandIcon={<ArrowDropUpIcon fontSize="inherit" />}
-      collapseIcon={<ArrowDropDownIcon fontSize="inherit" />}
-      label={`${node.alias || node.name}`}
-      nodeId={nodeId}
-    >
-      <QEProperty
-        label={`Name: ${node.table}`}
+    <>
+      <PropertyNode
+        qeName="Name"
+        qeValue={node.name}
         nodeId={`${nodeId}.name`}
-        itemType="Property"
       />
       {node.table && (
-        <QEProperty
-          label={`Table: ${node.table}`}
+        <PropertyNode
+          qeName="Table"
+          qeValue={node.table}
           nodeId={`${nodeId}.table`}
-          itemType="Property"
         />
       )}
-      {node.alias && (
-        <QEProperty
-          label={`Alias: ${node.alias}`}
-          nodeId={`${nodeId}.alias`}
-          itemType="Property"
-        />
-      )}
-    </QEColumn>
+      <PropertyNode
+        qeName="Alias"
+        qeValue={node.alias}
+        nodeId={`${nodeId}.alias`}
+        defaultValue={node.name}
+      />
+    </>
   );
 };
 

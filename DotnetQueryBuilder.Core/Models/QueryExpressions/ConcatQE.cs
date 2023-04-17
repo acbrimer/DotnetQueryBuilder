@@ -1,11 +1,11 @@
 
 namespace DotnetQueryBuilder.Core;
 
-public class ConcatCE : QueryExpression, IColumnExpression, IScalarExpression
+public class ConcatQE : QueryExpression, IColumnExpression, IScalarExpression
 {
     public IEnumerable<IColumnExpression> Arguments { get; set; }
     public string? Alias { get; set; }
-    public ConcatCE(params IColumnExpression[] arguments)
+    public ConcatQE(params IColumnExpression[] arguments)
     {
         Arguments = arguments;
     }

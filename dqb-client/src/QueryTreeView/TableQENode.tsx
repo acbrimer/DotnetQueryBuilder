@@ -1,6 +1,6 @@
 import React from "react";
 import QEItem from "./QEItem";
-import QEProperty from "./QEProperty";
+import PropertyNode from "./PropertyNode";
 
 type TableQEProps = {
   node: ITableQE;
@@ -12,28 +12,30 @@ const TableQENode = (props: TableQEProps) => {
   return (
     <QEItem label={`Table: ${node.alias || node.table}`} nodeId={nodeId}>
       {node.catalog && (
-        <QEProperty
-          label={`Catalog: ${node.catalog}`}
+        <PropertyNode
+          qeName="Catalog"
+          qeValue={node.catalog}
           nodeId={`${nodeId}.catalog`}
           itemType="Property"
         />
       )}
       {node.schema && (
-        <QEProperty
+        <PropertyNode
+          qeName="Schema"
+          qeValue={node.schema}
           label={`Schema: ${node.schema}`}
           nodeId={`${nodeId}.schema`}
-          itemType="Property"
         />
       )}
-      <QEProperty
-        label={`Name: ${node.table}`}
+      <PropertyNode
+        qeName="Name"
+        qeValue={node.table}
         nodeId={`${nodeId}.table`}
-        itemType="Property"
       />
-      <QEProperty
-        label={`Alias: ${node.alias}`}
+      <PropertyNode
+        qeName="Alias"
+        qeValue={node.alias}
         nodeId={`${nodeId}.alias`}
-        itemType="Property"
       />
     </QEItem>
   );

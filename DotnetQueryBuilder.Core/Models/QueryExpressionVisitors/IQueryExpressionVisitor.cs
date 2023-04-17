@@ -15,7 +15,7 @@ public interface IQueryExpressionVisitor
     void Visit(AndQE and);
     void Visit(OrQE or);
     void Visit(CastQE cast);
-    void Visit(ConcatCE concat);
+    void Visit(ConcatQE concat);
     void Visit(TernaryQE ternaryQE);
     void Visit(CaseConditionQE caseConditionQE);
     void Visit(CaseQE caseQE);

@@ -41,6 +41,12 @@ public class SelectQE : QueryExpression, ITableExpression, ISelectExpression
         return this;
     }
 
+    public virtual SelectQE GroupBy(params IScalarExpression[] columns)
+    {
+        GroupByClause = new GroupByQE(columns);
+        return this;
+    }
+
     public virtual SelectQE OrderBy(params OrderByQE[] orderBy)
     {
         OrderByClause = orderBy;

@@ -156,8 +156,13 @@ public class QueryExpressionVisitor : IQueryExpressionVisitor
     }
     public virtual void Visit(ConstantQE constant)
     {
-        _constants.Add(constant.Value);
-        _sqlBuilder.Append($"@Const{(_constants.Count() - 1)}");
+        // _constants.Add(constant.Value);
+        // _sqlBuilder.Append($"@Const{(_constants.Count() - 1)}");
+        if (constant.Value is int || constant.Value is short || constant.Value is long || constant.Value is decimal || constant.Value is float)
+            _sqlBuilder.Append(constant.Value.ToString());
+        else
+            _sqlBuilder.Append($"'{constant.Value.ToString()}'");
+
         AddColumnAlias(constant);
     }
     public virtual void Visit(JoinQE join)
@@ -219,7 +224,7 @@ public class QueryExpressionVisitor : IQueryExpressionVisitor
         _sqlBuilder.Append($" AS {cast.TargetType}");
         AddColumnAlias(cast);
     }
-    public virtual void Visit(ConcatCE concat)
+    public virtual void Visit(ConcatQE concat)
     {
         _sqlBuilder.Append("CONCAT(");
         for (int i = 0; i < concat.Arguments.Count(); i++)

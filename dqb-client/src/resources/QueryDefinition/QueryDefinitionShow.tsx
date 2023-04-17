@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Create, SimpleForm, TextInput, ArrayInput } from "react-admin";
-import SelectExpressionInput from "./SelectExpressionInput";
+import { Show, SimpleShowLayout, TextField } from "react-admin";
 
 const QueryDefinitionShow = () => {
   return (
-    <Create>
-      <SimpleForm>
-        <SelectExpressionInput source="select" />
-      </SimpleForm>
-    </Create>
+    <Show>
+      <SimpleShowLayout>
+        <TextField source="id" />
+      </SimpleShowLayout>
+    </Show>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import QEItem from "./QEItem";
 import QENode from "./QENode";
-import QEProperty from "./QEProperty";
+import PropertyNode from "./PropertyNode";
 
 type JoinQEProps = {
   node: IJoinQE;
@@ -11,11 +11,19 @@ type JoinQEProps = {
 const JoinQENode = (props: JoinQEProps) => {
   const { node, nodeId } = props;
   return (
-    <QEItem label={`${node.joinType} JOIN `} nodeId={nodeId}>
+    <QEItem
+      label={`${node.joinType.toUpperCase()} JOIN ${
+        node.target._type === "table"
+          ? (node.target as ITableQE).table
+          : "(SELECT ...)"
+      }`}
+      nodeId={nodeId}
+    >
       <QENode node={node.target} nodeId={`${nodeId}.target`} />
       <QENode node={node.condition} nodeId={`${nodeId}.condition`} />
-      <QEProperty
-        label={`Type: ${node.joinType}`}
+      <PropertyNode
+        qeName="Type"
+        qeValue={node.joinType}
         nodeId={`${nodeId}.joinType`}
       />
     </QEItem>

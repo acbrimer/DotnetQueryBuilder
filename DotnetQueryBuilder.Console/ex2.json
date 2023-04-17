@@ -1,0 +1,111 @@
+{
+  "columns": [
+    {
+      "name": "id",
+      "table": "orders",
+      "_type": "column"
+    },
+    {
+      "name": "id",
+      "table": "customers",
+      "alias": "Customer ID",
+      "_type": "column"
+    },
+    {
+      "name": "first_name",
+      "table": "customers",
+      "alias": "Customer First Name",
+      "_type": "column"
+    },
+    {
+      "name": "last_name",
+      "table": "customers",
+      "alias": "Customer Last Name",
+      "_type": "column"
+    },
+    {
+      "name": "total",
+      "table": "orders",
+      "alias": "Total Orders",
+      "_type": "column"
+    },
+    {
+      "name": "created_timestamp",
+      "table": "orders",
+      "_type": "column"
+    },
+    {
+      "limit": 1,
+      "columns": [
+        {
+          "name": "zip_code",
+          "table": "ca",
+          "_type": "column"
+        }
+      ],
+      "fromClause": {
+        "table": "customer_address",
+        "alias": "ca",
+        "_type": "table"
+      },
+      "whereClause": {
+        "operator": "eq",
+        "left": {
+          "name": "id",
+          "table": "customers",
+          "_type": "column"
+        },
+        "right": {
+          "name": "customer_id",
+          "table": "ca",
+          "_type": "column"
+        },
+        "_type": "predicate"
+      },
+      "orderByClause": [
+        {
+          "direction": "desc",
+          "column": {
+            "name": "created_on",
+            "table": "ca",
+            "_type": "column"
+          },
+          "_type": "orderby"
+        }
+      ],
+      "alias": "Current Zip Code",
+      "_type": "single"
+    }
+  ],
+  "fromClause": {
+    "table": "customers",
+    "alias": "customers",
+    "_type": "table"
+  },
+  "joinClause": [
+    {
+      "joinType": "inner",
+      "target": {
+        "table": "orders",
+        "alias": "orders",
+        "_type": "table"
+      },
+      "condition": {
+        "operator": "eq",
+        "left": {
+          "name": "id",
+          "table": "customers",
+          "_type": "column"
+        },
+        "right": {
+          "name": "customer_id",
+          "table": "orders",
+          "_type": "column"
+        },
+        "_type": "predicate"
+      },
+      "_type": "join"
+    }
+  ],
+  "_type": "select"
+}

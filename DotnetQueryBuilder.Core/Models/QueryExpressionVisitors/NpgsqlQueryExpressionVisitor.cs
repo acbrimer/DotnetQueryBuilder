@@ -3,7 +3,7 @@ namespace DotnetQueryBuilder.Core;
 public class NpgsqlQueryExpressionVisitor : QueryExpressionVisitor
 {
     public override string _sqlIdentifiers { get => "\"\""; }
-    public override void Visit(ConcatCE concat)
+    public override void Visit(ConcatQE concat)
     {
         for (int i = 0; i < concat.Arguments.Count(); i++)
         {

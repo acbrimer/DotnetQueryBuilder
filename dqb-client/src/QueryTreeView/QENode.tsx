@@ -1,12 +1,12 @@
 import * as React from "react";
-import { TreeView, TreeItem } from "@mui/lab";
-import { Typography, Icon } from "@mui/material";
 import AggregateQENode from "./AggregateQENode";
 import BinaryQENode from "./BinaryQENode";
 import ColumnQENode from "./ColumnQENode";
 import TableQENode from "./TableQENode";
 import SelectQENode from "./SelectQENode";
-import StyledTreeItem from "./QEItem";
+import JoinQENode from "./JoinQENode";
+import AndOrQENode from "./AndOrQENode";
+import PredicateQENode from "./PredicateQENode";
 
 export interface QENodeProps {
   node: IQueryExpression;
@@ -28,9 +28,15 @@ const QENode = (props: QENodeProps) => {
       case "table":
         return <TableQENode node={node as ITableQE} {...{ nodeId }} />;
       case "join":
-        return <TableQENode node={node as ITableQE} {...{ nodeId }} />;
+        return <JoinQENode node={node as IJoinQE} {...{ nodeId }} />;
       case "select":
+      case "single":
         return <SelectQENode node={node as ISelectQE} {...{ nodeId }} />;
+      case "predicate":
+        return <PredicateQENode node={node as IPredicateQE} {...{ nodeId }} />;
+      case "and":
+      case "or":
+        return <AndOrQENode node={node as IAndQE | IOrQE} {...{ nodeId }} />;
       default:
         return <div>Unmapped node type</div>;
     }
