@@ -27,7 +27,6 @@ const ColumnEditorInput = (props: ColumnEditorInputProps) => {
     setTotalLines((defaultValue as string).split(/\r\n|\r|\n/).length);
     monaco.languages.registerCompletionItemProvider("sql", {
       provideCompletionItems: (model: any, position: any) => {
-        console.log("provideCompletionItems", { model, position });
         // Get the text before the current position
 
         const textBeforeCursor = model.getValueInRange({

@@ -35,9 +35,14 @@ export interface ColumnNodeProps extends TreeItemProps, IQueryTreeViewContext {
   InputComponent?: JSX.Element;
 }
 
-const ColumnTreeView = styled((props: ColumnNodeProps) => (
-  <TreeItem {...props} TransitionComponent={TransitionComponent} />
-))(({ theme, columnType, columnDefinition }) => ({
+export const ColumnTreeItem = styled((props: any) => (
+  <TreeItem
+    {...props}
+    expandIcon={<ArrowDropUpIcon fontSize="inherit" />}
+    collapseIcon={<ArrowDropDownIcon fontSize="inherit" />}
+    TransitionComponent={TransitionComponent}
+  />
+))(({ theme, columnType }) => ({
   "&:hover .column-edit-button": {
     opacity: 1,
   },
@@ -64,6 +69,9 @@ const ColumnTreeView = styled((props: ColumnNodeProps) => (
         : "solid",
     borderRadius: 4,
     marginBottom: 4,
+  },
+  [`& > .${treeItemClasses.label}`]: {
+    fontFamily: "monospace",
   },
   [`& > .${treeItemClasses.group}`]: {
     marginLeft: 15,
@@ -262,16 +270,10 @@ const ColumnNode = (props: ColumnNodeProps) => {
   );
 
   return (
-    <ColumnTreeView
-      {...props}
-      label={labelComponent}
-      nodeId={`${nodeId}-col`}
-      expandIcon={<ArrowDropUpIcon fontSize="inherit" />}
-      collapseIcon={<ArrowDropDownIcon fontSize="inherit" />}
-    >
+    <ColumnTreeItem {...props} label={labelComponent} nodeId={`${nodeId}-col`}>
       <QENode {...props} />
       {columnDefinitionProps}
-    </ColumnTreeView>
+    </ColumnTreeItem>
   );
 };
 
