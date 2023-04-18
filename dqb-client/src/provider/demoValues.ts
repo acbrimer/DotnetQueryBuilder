@@ -126,4 +126,5 @@ export default {
   connectionCatalogs: catalogs,
   connectionTables: tables,
   connectionColumns: columns,
+  testSync: [],
 };

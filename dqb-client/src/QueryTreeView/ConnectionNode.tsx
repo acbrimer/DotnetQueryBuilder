@@ -32,8 +32,8 @@ const ConnectionTreeItem = styled((props: any) => (
     },
   },
   [`& .${treeItemClasses.group}`]: {
-    marginLeft: 15,
-    paddingLeft: 18,
+    marginLeft: 8,
+    paddingLeft: 8,
     // borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
   },
 }));
@@ -45,7 +45,7 @@ interface ConnectionNodeProps
 const ConnectionNode = (props: ConnectionNodeProps) => {
   const { name, id, provider } = props;
 
-  const { data, isLoading, error } = useGetManyReference("connectionCatalogs", {
+  const { data, isLoading, error } = useGetManyReference("local/connectionCatalogs", {
     target: "connectionId",
     id: id,
     pagination: { page: 1, perPage: 100 },

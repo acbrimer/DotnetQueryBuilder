@@ -8,9 +8,11 @@ import { RaRecord } from "react-admin";
 
 export interface IConnectionTableRecord extends RaRecord {
   table: string;
+  tableType?: string;
   schema?: string;
   catalog?: string;
-  connectionId: string;
+  connectionId?: string;
+  catalogId?: string;
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

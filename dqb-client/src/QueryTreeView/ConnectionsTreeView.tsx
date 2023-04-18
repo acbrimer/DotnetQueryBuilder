@@ -11,11 +11,11 @@ import ConnectionNode from "./ConnectionNode";
 function ConnectionsTreeView(props: any) {
   const treeRef = React.createRef<any>();
 
-  const { data: catalogs } = useGetList("connectionCatalogs", {
+  const { data: catalogs } = useGetList("local/connectionCatalogs", {
     pagination: { page: 1, perPage: 100 },
     sort: { field: "id", order: "ASC" },
   });
-  const { data, total, isLoading, error } = useGetList("connections", {
+  const { data, total, isLoading, error } = useGetList("local/connections", {
     pagination: { page: 1, perPage: 100 },
     sort: { field: "id", order: "ASC" },
   });

@@ -1,5 +1,7 @@
 import * as React from "react";
 import { alpha, styled } from "@mui/material/styles";
+import { deepOrange } from "@mui/material/colors";
+
 import TreeItem, { TreeItemProps, treeItemClasses } from "@mui/lab/TreeItem";
 import { TransitionComponent } from "./treeViewFunctions";
 import { LoadingIndicator, useGetManyReference } from "react-admin";
@@ -11,23 +13,24 @@ import { IConnectionCatalogRecord } from "../resources/ConnectionCatalogs";
 const ConnectionCatalogTreeItem = styled((props: any) => (
   <TreeItem
     {...props}
-    expandIcon={<DatabaseIcon />}
-    collapseIcon={<DatabaseIcon />}
+    expandIcon={<DatabaseIcon color="inherit" />}
+    collapseIcon={<DatabaseIcon color="inherit" />}
     TransitionComponent={TransitionComponent}
   />
 ))(({ theme }) => ({
   [`& > .${treeItemClasses.content}`]: {
     marginBottom: 4,
-  },
-  [`& > .${treeItemClasses.iconContainer}`]: {
-    "& .close": {
-      opacity: 0.3,
+    [`& > .${treeItemClasses.iconContainer}`]: {
+      "& svg": { color: deepOrange[900] },
+      "& .close": {
+        opacity: 0.3,
+      },
     },
   },
   [`& .${treeItemClasses.group}`]: {
-    marginLeft: 15,
-    paddingLeft: 18,
-    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
+    marginLeft: 8,
+    paddingLeft: 8,
+    borderLeft: `1px solid ${alpha(deepOrange[900], 0.4)}`,
   },
 }));
 
@@ -38,7 +41,7 @@ interface ConnectionCatalogNodeProps
 const ConnectionCatalogNode = (props: ConnectionCatalogNodeProps) => {
   const { catalog, id } = props;
 
-  const { data, isLoading, error } = useGetManyReference("connectionTables", {
+  const { data, isLoading, error } = useGetManyReference("local/connectionTables", {
     target: "catalogId",
     id: id,
     pagination: { page: 1, perPage: 100 },

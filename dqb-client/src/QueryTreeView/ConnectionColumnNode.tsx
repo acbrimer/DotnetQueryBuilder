@@ -26,7 +26,7 @@ const ConnectionColumnNode = (props: ConnectionColumnNodeProps) => {
   return (
     <ColumnTreeItem
       label={
-        <Typography fontWeight="bold" fontFamily="monospace">
+        <Typography fontSize="small" fontWeight="bold" fontFamily="monospace">
           {column}
         </Typography>
       }

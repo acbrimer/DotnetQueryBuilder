@@ -52,7 +52,7 @@ public static class SQLiteConnectionExtensions
             FROM
             tables_cte AS t
             INNER JOIN columns_cte AS c ON t.TableSchema = c.TableSchema AND t.TableName = c.TableName;";
-    public static List<DbSchemaTable> GetTables(this SQLiteConnection connection)
+    public static List<ConnectionTableDto> GetTables(this SQLiteConnection connection)
     {
         // var schemaDataTypes = connection.GetSchema("DataTypes");
         // Dictionary<string?, Type> dataTypes = schemaDataTypes.AsEnumerable()
@@ -91,11 +91,11 @@ public static class SQLiteConnectionExtensions
 
             var dbSchemaColumns = columns.Select(col =>
             {
-                var dbSchemaCol = new DbSchemaColumn
+                var dbSchemaCol = new ConnectionColumnDto
                 {
-                    TableName = table.TableName,
-                    TableCatalog = "main",
-                    ColumnName = col.name,
+                    Table = table.TableName,
+                    Catalog = "main",
+                    Column = col.name,
                     NativeType = col.type,
                     DataType = col.type == "INTEGER" ? typeof(Int32) : col.type.StartsWith("NUMERIC") ? typeof(Decimal) : typeof(String),
                     OrdinalPosition = col.cid,
@@ -116,11 +116,11 @@ public static class SQLiteConnectionExtensions
                 }
                 return dbSchemaCol;
             });
-            return new DbSchemaTable()
+            return new ConnectionTableDto()
             {
                 Id = table.TableName,
-                TableName = table.TableName,
-                TableCatalog = "main",
+                Table = table.TableName,
+                Catalog = "main",
                 Columns = dbSchemaColumns.ToList()
             };
         }).ToList();

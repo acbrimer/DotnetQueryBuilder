@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c5K+xrE5kHL8EpTIqUubtcaj1FoB42KJnnFrNDFwvlUyBRvsJReXCgcS0dkNGsXnLUdBOD1+77okbq7jICnPVA==",
+  "dgSpecHash": "OlAC/QCnwjyakmV8NNJJXefO0m0TPTdq4ViYbTWtsq1lvzJirHQrL0ESKE6KAakuqA/cC/HisBoha8nQJ/APng==",
   "success": true,
   "projectFilePath": "/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/DotnetQueryBuilder.DbConnect.csproj",
   "expectedPackageFiles": [

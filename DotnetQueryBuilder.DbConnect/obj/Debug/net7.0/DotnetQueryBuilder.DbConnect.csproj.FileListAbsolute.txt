@@ -1,0 +1,17 @@
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.DbConnect.deps.json
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.DbConnect.runtimeconfig.json
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.DbConnect.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.DbConnect.pdb
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.Core.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/bin/Debug/net7.0/DotnetQueryBuilder.Core.pdb
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.csproj.AssemblyReference.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.GeneratedMSBuildEditorConfig.editorconfig
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.AssemblyInfoInputs.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.AssemblyInfo.cs
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.csproj.CoreCompileInputs.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.csproj.CopyComplete
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/refint/DotnetQueryBuilder.DbConnect.dll
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.pdb
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/DotnetQueryBuilder.DbConnect.genruntimeconfig.cache
+/Users/abrimer/Dev/DotnetQueryBuilder/DotnetQueryBuilder.DbConnect/obj/Debug/net7.0/ref/DotnetQueryBuilder.DbConnect.dll

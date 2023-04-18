@@ -1,5 +1,6 @@
 import * as React from "react";
 import { alpha, styled } from "@mui/material/styles";
+import { deepPurple } from "@mui/material/colors";
 import TreeItem, { TreeItemProps, treeItemClasses } from "@mui/lab/TreeItem";
 import { TransitionComponent } from "./treeViewFunctions";
 import { IConnectionTableRecord } from "../resources/ConnectionTables";
@@ -19,12 +20,14 @@ const ConnectionTableTreeItem = styled((props: any) => (
 ))(({ theme }) => ({
   [`& > .${treeItemClasses.content}`]: {
     marginBottom: 4,
-  },
-  [`& > .${treeItemClasses.iconContainer}`]: {
-    "& .close": {
-      opacity: 0.3,
+    [`& > .${treeItemClasses.iconContainer}`]: {
+      "& svg": { color: deepPurple[900] },
+      "& .close": {
+        opacity: 0.3,
+      },
     },
   },
+
   [`& .${treeItemClasses.group}`]: {
     marginLeft: 15,
     paddingLeft: 18,
@@ -39,7 +42,7 @@ interface ConnectionTableNodeProps
 const ConnectionTableNode = (props: ConnectionTableNodeProps) => {
   const { table, catalog, schema, connection, id } = props;
 
-  const { data, isLoading, error } = useGetManyReference("connectionColumns", {
+  const { data, isLoading, error } = useGetManyReference("local/connectionColumns", {
     target: "tableId",
     id: id,
     pagination: { page: 1, perPage: 100 },

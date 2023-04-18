@@ -89,20 +89,20 @@ c.
 FROM
 tables_cte AS t
 INNER JOIN columns_cte AS c ON t.TableSchema = c.TableSchema AND t.TableName = c.TableName;";
-    public static List<DbSchemaTable> GetTables(this SqlConnection connection)
+    public static List<ConnectionTableDto> GetTables(this SqlConnection connection)
     {
         var schemaDataTypes = connection.GetSchema("DataTypes");
         Dictionary<string?, Type> dataTypes = schemaDataTypes.AsEnumerable()
             .Where(r => r.Field<string?>("TypeName") != null && r.Field<string?>("DataType") != null)
             .ToDictionary(r => r.Field<string>("TypeName"), r => Type.GetType(r.Field<string?>("DataType")));
-        Dictionary<string, DbSchemaTable> tables = new Dictionary<string, DbSchemaTable>();
+        Dictionary<string, ConnectionTableDto> tables = new Dictionary<string, ConnectionTableDto>();
 
-        return connection.Query<DbSchemaTable, DbSchemaColumn, DbSchemaTable>(GetTablesQuery, map: (table, column) =>
+        return connection.Query<ConnectionTableDto, ConnectionColumnDto, ConnectionTableDto>(GetTablesQuery, map: (table, column) =>
                 {
-                    if (!tables.TryGetValue(table.Id, out DbSchemaTable tableEntry))
+                    if (!tables.TryGetValue(table.Id, out ConnectionTableDto tableEntry))
                     {
                         tableEntry = table;
-                        tableEntry.Columns = tableEntry.Columns ?? new List<DbSchemaColumn>();
+                        tableEntry.Columns = tableEntry.Columns ?? new List<ConnectionColumnDto>();
                         tables.Add(table.Id, tableEntry);
                     }
                     column.DataType = dataTypes.Keys.Contains(column.NativeType) ? dataTypes[column.NativeType] : typeof(string);

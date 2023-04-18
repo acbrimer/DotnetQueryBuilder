@@ -4,17 +4,24 @@ using System.Data;
 using Npgsql;
 using Dapper;
 using DotnetQueryBuilder.Core;
+using Newtonsoft.Json;
 
 public static class NpgsqlConnectionExtensions
 {
+    public static readonly string[] ExcludeDbs = new string[] {
+        "postgres",
+        "template0",
+        "template1"
+    };
+
     public static readonly string GetTablesQuery = @"
             WITH tables_cte
             AS (
                 SELECT 
                 table_catalog || '.' || table_schema || '.' || table_name as Id,
-                table_catalog as TableCatalog,
-                table_schema as TableSchema,
-                table_name as TableName,
+                table_catalog as Catalog,
+                table_schema as Schema,
+                table_name as Table,
                 table_type as TableType
                 FROM information_schema.tables
                 WHERE table_schema NOT IN ('information_schema', 'pg_catalog')
@@ -60,29 +67,68 @@ public static class NpgsqlConnectionExtensions
                 c.*
             FROM tables_cte as t
             INNER JOIN columns_cte as c
-                ON t.TableSchema = c.TableSchema
-                AND t.TableName = c.TableName";
-    public static List<DbSchemaTable> GetTables(this NpgsqlConnection connection)
+                ON t.Schema = c.TableSchema
+                AND t.Table = c.TableName";
+
+    public static ConnectionSchemaDto GetConnectionSchema(this NpgsqlConnection connection, string connectionId)
+    {
+        var dbs = connection.GetSchema("Databases").AsEnumerable()
+            .Select(r => r["database_name"])
+            .Where(n => !ExcludeDbs.Contains(n.ToString()));
+
+        var catalogs = dbs.Select(c =>
+            new ConnectionCatalogDto
+            {
+                Id = connectionId,
+                Catalog = c.ToString(),
+                ConnectionId = connectionId,
+                Tables = GetTables(connection, connectionId, c.ToString())
+            }).ToList();
+
+        return new ConnectionSchemaDto
+        {
+            Id = connectionId,
+            Catalogs = catalogs
+        };
+    }
+
+    public static List<ConnectionTableDto> GetTables(this NpgsqlConnection connection, string connectionId)
+    {
+        return GetTables(connection, connectionId, connection.Database);
+    }
+
+    public static List<ConnectionTableDto> GetTables(this NpgsqlConnection connection, string connectionId, string catalog)
     {
         var schemaDataTypes = connection.GetSchema("DataTypes");
+
         Dictionary<string?, Type> dataTypes = schemaDataTypes.AsEnumerable()
             .Where(r => r.Field<string?>("TypeName") != null && r.Field<string?>("DataType") != null)
             .ToDictionary(r => r.Field<string>("TypeName"), r => Type.GetType(r.Field<string?>("DataType")));
-        Dictionary<string, DbSchemaTable> tables = new Dictionary<string, DbSchemaTable>();
-
-        return connection.Query<DbSchemaTable, DbSchemaColumn, DbSchemaTable>(GetTablesQuery, map: (table, column) =>
+        Dictionary<string, ConnectionTableDto> tables = new Dictionary<string, ConnectionTableDto>();
+        try
+        {
+            connection.Open();
+        }
+        catch { }
+        if (catalog != connection.Database)
+            connection.ChangeDatabase(catalog);
+        return connection.Query<ConnectionTableDto, ConnectionColumnDto, ConnectionTableDto>(GetTablesQuery, map: (table, column) =>
                 {
-                    if (!tables.TryGetValue(table.Id, out DbSchemaTable tableEntry))
+                    if (!tables.TryGetValue(table.Id, out ConnectionTableDto tableEntry))
                     {
                         tableEntry = table;
-                        tableEntry.Columns = tableEntry.Columns ?? new List<DbSchemaColumn>();
+                        tableEntry.CatalogId = $"{connectionId}.{table.Catalog}";
+                        tableEntry.Columns = tableEntry.Columns ?? new List<ConnectionColumnDto>();
                         tables.Add(table.Id, tableEntry);
                     }
                     column.DataType = dataTypes.Keys.Contains(column.NativeType) ? dataTypes[column.NativeType] : typeof(string);
+                    column.TableId = tableEntry.Id;
+                    // tableEntry.Id = $"{connection.ConnectionString.ToMD5()}.{table.Catalog}.{tableEntry.Id}";
                     tableEntry.Columns.Add(column);
                     return tableEntry;
                 }, splitOn: "ColumnName").Distinct().ToList();
     }
+
     public static string BuildQueryExpression(this NpgsqlConnection connection, QueryExpression qe)
     {
         var visitor = new NpgsqlQueryExpressionVisitor();

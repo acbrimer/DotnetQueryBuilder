@@ -15,6 +15,7 @@ public class DbProvider
     public string DatabaseProvider { get; set; }
     private DbConnection connection { get; set; }
     public DbConnection conn { get => connection; }
+    
     public DbProvider(string databaseProvider, string connectionString)
     {
         switch (databaseProvider.ToLower())

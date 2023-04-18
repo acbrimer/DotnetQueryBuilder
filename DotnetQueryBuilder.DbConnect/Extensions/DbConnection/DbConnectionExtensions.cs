@@ -12,7 +12,22 @@ using DotnetQueryBuilder.Core;
 
 public static class DbConnectionExtensions
 {
-    public static IEnumerable<DbSchemaTable> GetTables(this DbConnection connection)
+
+
+    public static ConnectionSchemaDto GetConnectionSchema(this DbConnection connection, string connectionId)
+    {
+        Type connectionType = connection.GetType();
+        if (connectionType == typeof(NpgsqlConnection))
+            return ((NpgsqlConnection)connection).GetConnectionSchema(connectionId);
+        // if (connectionType == typeof(SQLiteConnection))
+        //     return ((SQLiteConnection)connection).GetConnectionRecord();
+        // if (connectionType == typeof(MySqlConnection))
+        //     return ((MySqlConnection)connection).GetConnectionRecord();
+        // if (connectionType == typeof(SqlConnection))
+        //     return ((SqlConnection)connection).GetConnectionRecord();
+        throw new NotImplementedException($"Error: `GetConnectionSchema` not implemented for {connection.GetType()}");
+    }
+    public static IEnumerable<ConnectionTableDto> GetTables(this DbConnection connection)
     {
         Type connectionType = connection.GetType();
         if (connectionType == typeof(NpgsqlConnection))

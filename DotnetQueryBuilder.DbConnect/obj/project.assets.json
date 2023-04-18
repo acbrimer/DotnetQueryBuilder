@@ -753,12 +753,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "BasicSQLFormatter": "1.0.3",
-          "Dapper": "2.0.123",
-          "MySql.Data": "8.0.32.1",
-          "Newtonsoft.Json": "13.0.3",
-          "Npgsql": "7.0.2",
-          "System.Data.SQLite": "1.0.117",
-          "linq2db": "5.1.1"
+          "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
           "bin/placeholder/DotnetQueryBuilder.Core.dll": {}

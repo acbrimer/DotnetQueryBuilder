@@ -4,14 +4,19 @@ import queryDefinition from "./resources/QueryDefinition";
 import Dashboard from "./Dashboard";
 import dataProvider from "./provider/dataProvider";
 import Connections from "./resources/Connections";
+import MainLayout from "./layout/MainLayout";
 
 const App = () => (
-  <Admin dashboard={Dashboard} dataProvider={dataProvider}>
-    <Resource name="queryDefinition" {...queryDefinition} />
+  <Admin layout={MainLayout} dashboard={Dashboard} dataProvider={dataProvider}>
+    
+    <Resource name="local/queryDefinition" {...queryDefinition} />
+    <Resource name="local/connections" {...Connections} />
     <Resource name="connections" {...Connections} />
-    <Resource name="connectionCatalogs" />
-    <Resource name="connectionTables" />
-    <Resource name="connectionColumns" />
+    <Resource name="connectionSchema"  />
+    <Resource name="local/connectionCatalogs" />
+    <Resource name="local/connectionTables" />
+    <Resource name="local/connectionColumns" />
+    <Resource name="local/testSync" />
   </Admin>
 );
 

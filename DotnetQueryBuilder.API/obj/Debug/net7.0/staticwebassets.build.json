@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lgqG8QJwXG+BzzfhvuUUuxy+3H7y969CTDqmUn9E+e4=",
+  "Source": "DotnetQueryBuilder.API",
+  "BasePath": "_content/DotnetQueryBuilder.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

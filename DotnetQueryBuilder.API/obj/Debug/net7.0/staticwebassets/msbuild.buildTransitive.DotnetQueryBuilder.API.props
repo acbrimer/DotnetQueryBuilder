@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/DotnetQueryBuilder.API.props" />
+</Project>
