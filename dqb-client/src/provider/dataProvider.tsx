@@ -6,7 +6,6 @@ import { IConnectionCatalogRecord } from "../resources/ConnectionCatalogs";
 import { IConnectionTableRecord } from "../resources/ConnectionTables";
 import { IConnectionColumnRecord } from "../resources/ConnectionColumns";
 
-
 const API_URI = "http://localhost:5006";
 
 const baseDataProvider = simpleRestProvider(
@@ -19,68 +18,7 @@ const _localDataProvider = localStorageDataProvider({
   defaultData: demoValues,
 });
 
-const localDataProvider = withLifecycleCallbacks(_localDataProvider, [
-  {
-    resource: "connections",
-    beforeUpdate: async (params, dataProvider) => {
-      try {
-        await dataProvider.getOne("connections", {
-          id: params.data.id,
-        });
-      } catch (e: any) {
-        dataProvider.create("connections", {
-          data: { id: params.data.id, createdTimestamp: Date.now() },
-        });
-      }
-      return params;
-    },
-  },
-  {
-    resource: "connectionCatalogs",
-    beforeUpdate: async (params, dataProvider) => {
-      try {
-        await dataProvider.getOne("connectionCatalogs", {
-          id: params.data.id,
-        });
-      } catch (e: any) {
-        dataProvider.create("connectionCatalogs", {
-          data: { id: params.data.id, createdTimestamp: Date.now() },
-        });
-      }
-      return params;
-    },
-  },
-  {
-    resource: "connectionTables",
-    beforeUpdate: async (params, dataProvider) => {
-      try {
-        await dataProvider.getOne("connectionTables", {
-          id: params.data.id,
-        });
-      } catch (e: any) {
-        dataProvider.create("connectionTables", {
-          data: { id: params.data.id, createdTimestamp: Date.now() },
-        });
-      }
-      return params;
-    },
-  },
-  {
-    resource: "connectionColumns",
-    beforeUpdate: async (params, dataProvider) => {
-      try {
-        await dataProvider.getOne("connectionColumns", {
-          id: params.data.id,
-        });
-      } catch (e: any) {
-        dataProvider.create("connectionColumns", {
-          data: { id: params.data.id, createdTimestamp: Date.now() },
-        });
-      }
-      return params;
-    },
-  },
-]);
+const localDataProvider = withLifecycleCallbacks(_localDataProvider, []);
 
 const providers: any = {
   base: baseDataProvider,
@@ -143,89 +81,117 @@ const dataProvider = withLifecycleCallbacks(_dataProvider, [
       return params;
     },
   },
-  {
-    resource: "connectionSchema",
-    afterGetOne: async (params, dataProvider) => {
-      await dataProvider.update("local/connections", {
-        data: {
-          id: params.data.id,
-          name: params.data.id,
-          provider: params.data.provider,
-          catalog: params.data.database,
-          lastSync: Date.now(),
-        },
-        id: params.data.id,
-        previousData: {},
-      });
+  // {
+  //   resource: "connectionSchema",
+  //   afterGetOne: async (params, dataProvider) => {
+  //     await dataProvider.create("local/connections", {
+  //       data: {
+  //         id: params.data.id,
+  //         name: params.data.id,
+  //         provider: params.data.provider,
+  //         catalog: params.data.database,
+  //         lastSync: Date.now(),
+  //       },
+  //     });
 
-      const catalogs: IConnectionCatalogRecord[] = (
-        params.data as any
-      ).catalogs.map(
-        (c: any) =>
-          ({
-            id: c.id,
-            catalog: c.catalog,
-            connectionId: c.connectionId,
-          } as IConnectionCatalogRecord)
-      );
-      // const tables: IConnectionTableRecord[] = (
-      //   params.data as any
-      // ).catalogs.flatMap((c: any) =>
-      //   c.tables.map(
-      //     (t: any) =>
-      //       ({
-      //         id: t.id,
-      //         table: t.table,
-      //         tableType: t.tableType,
-      //         catalog: c.catalog,
-      //         catalogId: c.id,
-      //         connectionId: c.connectionId,
-      //       } as IConnectionTableRecord)
-      //   )
-      // );
+  //     const catalogs: IConnectionCatalogRecord[] = (
+  //       params.data as any
+  //     ).catalogs.map(
+  //       (c: any) =>
+  //         ({
+  //           id: c.id,
+  //           catalog: c.catalog,
+  //           connectionId: c.connectionId,
+  //         } as IConnectionCatalogRecord)
+  //     );
 
-      // const columns: IConnectionColumnRecord[] = (
-      //   params.data as any
-      // ).catalogs.flatMap((c: any) =>
-      //   c.tables.flatMap((t: any) =>
-      //     t.columns.map(
-      //       (col: any) =>
-      //         ({
-      //           ...col,
-      //           id: col.id,
-      //           column: col.column,
-      //           table: col.table,
-      //           tableId: t.id,
-      //         } as IConnectionColumnRecord)
-      //     )
-      //   )
-      // );
+  //     const tables: IConnectionTableRecord[] = (
+  //       params.data as any
+  //     ).catalogs.flatMap((c: any) =>
+  //       c.tables.map(
+  //         (t: any) =>
+  //           ({
+  //             id: t.id,
+  //             table: t.table,
+  //             tableType: t.tableType,
+  //             catalog: c.catalog,
+  //             catalogId: c.id,
+  //             connectionId: c.connectionId,
+  //           } as IConnectionTableRecord)
+  //       )
+  //     );
 
-      catalogs.forEach(async (c) => {
-        await dataProvider.update("local/connectionCatalogs", {
-          data: c,
-          id: c.id,
-          previousData: {},
-        });
-      });
-      // tables.forEach(async (c) => {
-      //   await dataProvider.update("local/connectionTables", {
-      //     data: c,
-      //     id: c.id,
-      //     previousData: {},
-      //   });
-      // });
-      // columns.forEach(async (c) => {
-      //   await dataProvider.update("local/connectionColumns", {
-      //     data: c,
-      //     id: c.id,
-      //     previousData: {},
-      //   });
-      // });
+  //     const columns: IConnectionColumnRecord[] = (
+  //       params.data as any
+  //     ).catalogs.flatMap((c: any) =>
+  //       c.tables.flatMap((t: any) =>
+  //         t.columns.map(
+  //           (col: any) =>
+  //             ({
+  //               ...col,
+  //               id: col.id,
+  //               column: col.column,
+  //               table: col.table,
+  //               tableId: t.id,
+  //             } as IConnectionColumnRecord)
+  //         )
+  //       )
+  //     );
 
-      return params;
-    },
-  },
+  //     await Promise.allSettled(
+  //       catalogs.map((c) =>
+  //         dataProvider.delete("local/connectionCatalogs", {
+  //           id: c.id,
+  //         })
+  //       )
+  //     );
+  //     console.log("deleted local/connectionCatalogs");
+  //     await Promise.allSettled(
+  //       catalogs.map((c) =>
+  //         dataProvider.create("local/connectionCatalogs", {
+  //           data: c,
+  //         })
+  //       )
+  //     );
+  //     console.log("created local/connectionCatalogs");
+
+  //     await Promise.allSettled(
+  //       catalogs.map((c) =>
+  //         dataProvider.delete("local/connectionTables", {
+  //           id: c.id,
+  //         })
+  //       )
+  //     );
+  //     console.log("deleted local/connectionTables");
+  //     await Promise.allSettled(
+  //       tables.map((c) =>
+  //         dataProvider.create("local/connectionTables", {
+  //           data: c,
+  //         })
+  //       )
+  //     );
+  //     console.log("created local/connectionTables");
+
+  //     await Promise.allSettled(
+  //       catalogs.map((c) =>
+  //         dataProvider.delete("local/connectionColumns", {
+  //           id: c.id,
+  //         })
+  //       )
+  //     );
+  //     console.log("deleted local/connectionColumns");
+  //     await Promise.allSettled(
+  //       columns.map((c) =>
+  //         dataProvider.create("local/connectionColumns", {
+  //           data: c,
+  //         })
+  //       )
+  //     );
+  //     console.log("created local/connectionColumns");
+
+  //     return params;
+  //   },
+  // },
 ]);
 
 // @ts-ignore

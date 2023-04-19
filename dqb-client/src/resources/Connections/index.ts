@@ -6,6 +6,7 @@ import ConnectionShow from "./ConnectionShow";
 // Menu item
 import ConnectionsMenuItem from "./ConnectionsMenuItem";
 import { RaRecord } from "react-admin";
+import { IConnectionCatalogRecord } from "../ConnectionCatalogs";
 
 export interface IConnectionRecord extends RaRecord {
   // the name of the connection
@@ -14,6 +15,8 @@ export interface IConnectionRecord extends RaRecord {
   provider: "astro" | "postgres" | "sqlite" | "mysql" | "mssql";
   // default db to connect to
   catalog?: string;
+
+  catalogs: IConnectionCatalogRecord[];
 }
 
 export { ConnectionsMenuItem };

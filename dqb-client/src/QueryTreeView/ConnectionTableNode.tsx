@@ -36,32 +36,21 @@ const ConnectionTableTreeItem = styled((props: any) => (
 }));
 
 interface ConnectionTableNodeProps
-  extends IConnectionTableRecord,
-    Omit<TreeItemProps, "id" | "nodeId"> {}
+  extends Omit<TreeItemProps, "id" | "nodeId"> {
+  data: IConnectionTableRecord;
+}
 
 const ConnectionTableNode = (props: ConnectionTableNodeProps) => {
-  const { table, catalog, schema, connection, id } = props;
-
-  const { data, isLoading, error } = useGetManyReference("local/connectionColumns", {
-    target: "tableId",
-    id: id,
-    pagination: { page: 1, perPage: 100 },
-    sort: { field: "id", order: "ASC" },
-  });
-  if (isLoading) {
-    return <Loading />;
-  }
-  if (error) {
-    return <p>ERROR</p>;
-  }
+  const { data } = props;
+  const { table, catalog, schema, connection, id } = data;
 
   return (
     <ConnectionTableTreeItem
       label={<TableReference {...{ table, catalog, schema, connection }} />}
       nodeId={id}
     >
-      {data?.map((columnRecord: IConnectionColumnRecord) => (
-        <ConnectionColumnNode {...columnRecord} />
+      {data?.columns.map((columnRecord: IConnectionColumnRecord) => (
+        <ConnectionColumnNode data={columnRecord} />
       ))}
     </ConnectionTableTreeItem>
   );

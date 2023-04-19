@@ -3,7 +3,7 @@ import { IConnectionColumnRecord } from "../resources/ConnectionColumns";
 import { IConnectionRecord } from "../resources/Connections";
 import { IConnectionTableRecord } from "../resources/ConnectionTables";
 
-const connections: IConnectionRecord[] = [
+const connections: any[] = [
   {
     id: "connection1",
     name: "First Test Connection",
@@ -16,7 +16,7 @@ const connections: IConnectionRecord[] = [
   },
 ];
 
-const catalogs: IConnectionCatalogRecord[] = [
+const catalogs: any[] = [
   {
     id: "connection1.ordersDb",
     catalog: "ordersDb",
@@ -29,7 +29,7 @@ const catalogs: IConnectionCatalogRecord[] = [
   },
 ];
 
-const tables: IConnectionTableRecord[] = [
+const tables: any[] = [
   {
     id: "connection1.ordersDb.public.customers",
     table: "customers",

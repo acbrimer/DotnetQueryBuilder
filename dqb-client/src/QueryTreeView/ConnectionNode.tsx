@@ -4,7 +4,7 @@ import { alpha, styled } from "@mui/material/styles";
 import TreeItem, { TreeItemProps, treeItemClasses } from "@mui/lab/TreeItem";
 import { TransitionComponent } from "./treeViewFunctions";
 import { IConnectionRecord } from "../resources/Connections";
-import { LoadingIndicator, useGetManyReference } from "react-admin";
+import { LoadingIndicator, useGetOne } from "react-admin";
 import ConnectionCatalogNode from "./ConnectionCatalogNode";
 import { IConnectionTableRecord } from "../resources/ConnectionTables";
 import { PostgresIcon, SqliteIcon } from "./treeViewIcons";
@@ -45,11 +45,8 @@ interface ConnectionNodeProps
 const ConnectionNode = (props: ConnectionNodeProps) => {
   const { name, id, provider } = props;
 
-  const { data, isLoading, error } = useGetManyReference("local/connectionCatalogs", {
-    target: "connectionId",
+  const { data, isLoading, error } = useGetOne<any>("connectionSchema", {
     id: id,
-    pagination: { page: 1, perPage: 100 },
-    sort: { field: "id", order: "ASC" },
   });
   if (isLoading) {
     return <LoadingIndicator />;
@@ -58,9 +55,9 @@ const ConnectionNode = (props: ConnectionNodeProps) => {
     return <p>ERROR</p>;
   }
   return (
-    <ConnectionTreeItem label={name} nodeId={id} provider={provider}>
-      {data?.map((catalog: IConnectionCatalogRecord) => (
-        <ConnectionCatalogNode {...catalog} />
+    <ConnectionTreeItem label={id} nodeId={data.id} provider={provider}>
+      {data?.catalogs.map((catalog: IConnectionCatalogRecord) => (
+        <ConnectionCatalogNode data={catalog} />
       ))}
     </ConnectionTreeItem>
   );

@@ -4,12 +4,15 @@ import ConnectionCatalogsList from "./ConnectionCatalogsList";
 import ConnectionCatalogEdit from "./ConnectionCatalogEdit";
 import ConnectionCatalogShow from "./ConnectionCatalogShow";
 import { RaRecord } from "react-admin";
+import { IConnectionTableRecord } from "../ConnectionTables";
 
 export interface IConnectionCatalogRecord extends RaRecord {
   // the name of the catalog
   catalog: string;
   // the connectionId for the catalog
   connectionId: string;
+  
+  tables: IConnectionTableRecord[];
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

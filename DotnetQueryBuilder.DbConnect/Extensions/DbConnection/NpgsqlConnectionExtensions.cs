@@ -79,7 +79,7 @@ public static class NpgsqlConnectionExtensions
         var catalogs = dbs.Select(c =>
             new ConnectionCatalogDto
             {
-                Id = connectionId,
+                Id = $"{connectionId}.{c.ToString()}",
                 Catalog = c.ToString(),
                 ConnectionId = connectionId,
                 Tables = GetTables(connection, connectionId, c.ToString())
@@ -122,7 +122,8 @@ public static class NpgsqlConnectionExtensions
                         tables.Add(table.Id, tableEntry);
                     }
                     column.DataType = dataTypes.Keys.Contains(column.NativeType) ? dataTypes[column.NativeType] : typeof(string);
-                    column.TableId = tableEntry.Id;
+                    column.TableId = table.Id;
+                    tableEntry.Id = table.Id;
                     // tableEntry.Id = $"{connection.ConnectionString.ToMD5()}.{table.Catalog}.{tableEntry.Id}";
                     tableEntry.Columns.Add(column);
                     return tableEntry;

@@ -8,10 +8,12 @@ import { IConnectionColumnRecord } from "../resources/ConnectionColumns";
 import { Typography } from "@mui/material";
 
 interface ConnectionColumnNodeProps
-  extends IConnectionColumnRecord,
-    Omit<TreeItemProps, "id" | "nodeId"> {}
+  extends Omit<TreeItemProps, "id" | "nodeId"> {
+  data: IConnectionColumnRecord;
+}
 
 const ConnectionColumnNode = (props: ConnectionColumnNodeProps) => {
+  const { data } = props;
   const {
     id,
     column,
@@ -21,13 +23,14 @@ const ConnectionColumnNode = (props: ConnectionColumnNodeProps) => {
     catalog,
     schema,
     connection,
-  } = props;
+    name
+  } = data;
 
   return (
     <ColumnTreeItem
       label={
         <Typography fontSize="small" fontWeight="bold" fontFamily="monospace">
-          {column}
+          {name}
         </Typography>
       }
       nodeId={id}

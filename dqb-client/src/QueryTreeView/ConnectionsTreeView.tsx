@@ -11,14 +11,11 @@ import ConnectionNode from "./ConnectionNode";
 function ConnectionsTreeView(props: any) {
   const treeRef = React.createRef<any>();
 
-  const { data: catalogs } = useGetList("local/connectionCatalogs", {
+  const { data, isLoading, error } = useGetList("connections", {
     pagination: { page: 1, perPage: 100 },
     sort: { field: "id", order: "ASC" },
   });
-  const { data, total, isLoading, error } = useGetList("local/connections", {
-    pagination: { page: 1, perPage: 100 },
-    sort: { field: "id", order: "ASC" },
-  });
+
   if (isLoading) {
     return <LoadingIndicator />;
   }
@@ -30,9 +27,7 @@ function ConnectionsTreeView(props: any) {
       <TreeView
         ref={treeRef}
         aria-label="customized"
-        defaultExpanded={data
-          ?.map((r) => r.id)
-          .concat(catalogs?.map((c) => c.id))}
+        defaultExpanded={data?.map((r) => r.id)}
         defaultCollapseIcon={<MinusSquare />}
         defaultExpandIcon={<PlusSquare />}
         defaultEndIcon={<CloseSquare />}

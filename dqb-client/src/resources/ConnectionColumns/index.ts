@@ -12,6 +12,7 @@ export interface IConnectionColumnRecord extends RaRecord {
   tableId: string;
   tableAlias?: string;
   column: string;
+  name?: string;
   columnAlias?: string;
   description?: string | null;
   nativeType?: string | null;
